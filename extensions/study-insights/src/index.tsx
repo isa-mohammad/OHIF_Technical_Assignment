@@ -15,7 +15,7 @@ let teardownPrefetch: (() => void) | undefined;
 const studyInsightsExtension: Types.Extensions.Extension = {
   id,
 
-  onModeEnter: (params: withAppTypes) => {
+  onModeEnter: (params: Types.Extensions.ExtensionParams) => {
     teardownPrefetch = initStackScrollPrefetch(params);
 
     const { servicesManager } = params;

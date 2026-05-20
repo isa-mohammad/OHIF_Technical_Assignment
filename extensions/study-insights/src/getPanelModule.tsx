@@ -1,7 +1,8 @@
 import React from 'react';
+import { Types } from '@ohif/core';
 import PanelStudyInsights from './components/PanelStudyInsights';
 
-const getPanelModule = ({ servicesManager }: withAppTypes) => {
+const getPanelModule = ({ servicesManager }: Types.Extensions.ExtensionParams) => {
   return [
     {
       name: 'studyInsights',
@@ -14,3 +15,4 @@ const getPanelModule = ({ servicesManager }: withAppTypes) => {
 };
 
 export default getPanelModule;
+
