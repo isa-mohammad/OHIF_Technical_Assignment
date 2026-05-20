@@ -1,0 +1,34 @@
+{
+  "name": "@ohif/extension-study-insights",
+  "version": "3.13.0-beta.80",
+  "description": "OHIF extension: Study Insights toolbar, panel, viewport overlay, and stack prefetch",
+  "author": "SarcMed IQ",
+  "license": "MIT",
+  "main": "dist/ohif-extension-study-insights.umd.js",
+  "module": "src/index.tsx",
+  "engines": {
+    "node": ">=18",
+    "npm": ">=6",
+    "yarn": ">=1.16.0"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "clean": "shx rm -rf dist",
+    "dev": "cross-env NODE_ENV=development webpack --config .webpack/webpack.dev.js --watch --output-pathinfo",
+    "build": "cross-env NODE_ENV=production webpack --config .webpack/webpack.prod.js",
+    "build:package-1": "yarn run build"
+  },
+  "peerDependencies": {
+    "@cornerstonejs/core": "^4.0.0",
+    "@ohif/core": "3.13.0-beta.80",
+    "@ohif/ui-next": "3.13.0-beta.80",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "dependencies": {
+    "@babel/runtime": "7.28.2"
+  }
+}

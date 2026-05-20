@@ -7,6 +7,7 @@ import { initToolGroups, toolbarButtons, cornerstone,
   basicLayout,
   basicRoute,
   extensionDependencies as basicDependencies,
+  studyInsights,
   mode as basicMode,
   modeInstance as basicModeInstance,
  } from '@ohif/mode-basic';
@@ -29,7 +30,7 @@ export const longitudinalInstance = {
   props: {
     ...basicLayout.props,
     leftPanels: [tracked.thumbnailList],
-    rightPanels: [cornerstone.segmentation, tracked.measurements],
+    rightPanels: [cornerstone.segmentation, tracked.measurements, studyInsights.panel],
     viewports: [
       {
         namespace: tracked.viewport,
