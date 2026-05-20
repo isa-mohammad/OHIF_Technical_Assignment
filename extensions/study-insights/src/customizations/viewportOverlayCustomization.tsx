@@ -42,9 +42,3 @@ export const studyInsightsOverlayItem = {
     );
   },
 };
-
-export default {
-  'viewportOverlay.bottomRight': {
-    $push: [studyInsightsOverlayItem],
-  },
-};

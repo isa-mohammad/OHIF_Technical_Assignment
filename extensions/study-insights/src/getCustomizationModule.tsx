@@ -1,11 +1,11 @@
-import viewportOverlayCustomization from './customizations/viewportOverlayCustomization';
+import { studyInsightsOverlayItem } from './customizations/viewportOverlayCustomization';
 
 export default function getCustomizationModule() {
   return [
     {
-      name: 'default',
+      name: 'viewportOverlay.bottomRight',
       value: {
-        ...viewportOverlayCustomization,
+        $push: [studyInsightsOverlayItem],
       },
     },
   ];

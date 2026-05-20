@@ -1,4 +1,5 @@
 import { Types, ToolbarService } from '@ohif/core';
+import { studyInsightsOverlayItem } from './customizations/viewportOverlayCustomization';
 import { id } from './id';
 import getPanelModule from './getPanelModule';
 import getToolbarModule from './getToolbarModule';
@@ -19,7 +20,16 @@ const studyInsightsExtension: Types.Extensions.Extension = {
     teardownPrefetch = initStackScrollPrefetch(params);
 
     const { servicesManager } = params;
-    const { toolbarService } = servicesManager.services;
+    const { toolbarService, customizationService } = servicesManager.services;
+
+    customizationService.setCustomizations(
+      {
+        'viewportOverlay.bottomRight': {
+          $push: [studyInsightsOverlayItem],
+        },
+      },
+      customizationService.Scope.Mode
+    );
 
     toolbarService.register([
       {
