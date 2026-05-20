@@ -4,7 +4,6 @@ import { id } from './id';
 import getPanelModule from './getPanelModule';
 import getToolbarModule from './getToolbarModule';
 import getCommandsModule from './getCommandsModule';
-import getCustomizationModule from './getCustomizationModule';
 import { initStackScrollPrefetch } from './utils/stackScrollPrefetch';
 import {
   STUDY_INSIGHTS_PANEL_ID,
@@ -58,7 +57,6 @@ const studyInsightsExtension: Types.Extensions.Extension = {
   getPanelModule,
   getToolbarModule,
   getCommandsModule,
-  getCustomizationModule,
 };
 
 export default studyInsightsExtension;

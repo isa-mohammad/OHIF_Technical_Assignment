@@ -2,7 +2,7 @@
   "name": "@ohif/extension-study-insights",
   "version": "3.13.0-beta.80",
   "description": "OHIF extension: Study Insights toolbar, panel, viewport overlay, and stack prefetch",
-  "author": "SarcMed IQ",
+  "author": "Isa Mohammad Ismail",
   "license": "MIT",
   "main": "dist/ohif-extension-study-insights.umd.js",
   "module": "src/index.tsx",
