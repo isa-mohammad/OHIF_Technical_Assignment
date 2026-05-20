@@ -8,7 +8,7 @@ OHIF technical assignment implementation: study metadata panel, viewport overlay
 |-------------|----------------|
 | Toolbar button **Study Insights** | Registered in `onModeEnter` via `toolbarService` |
 | Study metadata panel | `panelModule.studyInsights` + `PanelStudyInsights.tsx` |
-| Viewport overlay | `getCustomizationModule` → `viewportOverlay.bottomRight` (`$push`) |
+| Viewport overlay | `onModeEnter` → `customizationService.setCustomizations` → `viewportOverlay.bottomRight` (`$push`, `Scope.Mode`) |
 | Prefetch after slice 10 | `utils/stackScrollPrefetch.ts` |
 | Error handling | `utils/getStudyInsightsMetadata.ts` + notifications |
 
@@ -28,7 +28,7 @@ Toolbar buttons are added in the extension `onModeEnter` hook (after the mode re
 - **`getPanelModule`** – right-side Study Insights panel
 - **`getToolbarModule`** – `evaluate.studyInsights` (disable when viewport/display set invalid)
 - **`getCommandsModule`** – `openStudyInsightsPanel` (CORNERSTONE context)
-- **`getCustomizationModule`** – viewport overlay items on `viewportOverlay.bottomRight` via `$push`
+- **`onModeEnter` → `customizationService.setCustomizations`** – viewport overlay item pushed onto `viewportOverlay.bottomRight` at `Scope.Mode` (auto-cleared on mode exit)
 - **`onModeEnter` / `onModeExit`** – toolbar registration and prefetch lifecycle
 - **Services**: `DicomMetadataStore`, `displaySetService`, `viewportGridService`, `panelService`, `uiNotificationService`, `cornerstoneViewportService`
 - **Cornerstone**: `STACK_NEW_IMAGE`, `imageLoadPoolManager`, `imageLoader.loadAndCacheImage`, `RequestType.Prefetch`
