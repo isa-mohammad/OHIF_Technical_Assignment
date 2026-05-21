@@ -142,6 +142,28 @@ function createDicomWebApi(dicomWebConfig: DicomWebConfig, servicesManager) {
 
       dicomWebConfigCopy = JSON.parse(JSON.stringify(dicomWebConfig));
 
+      // Extract static authorization headers if configured
+      const customHeaders = dicomWebConfig.requestOptions?.headers || dicomWebConfig.headers;
+      let staticAuthHeader = null;
+      if (customHeaders && customHeaders.Authorization) {
+        staticAuthHeader = customHeaders.Authorization;
+      } else if (dicomWebConfig.requestOptions?.auth) {
+        const auth = dicomWebConfig.requestOptions.auth;
+        if (typeof auth === 'function') {
+          staticAuthHeader = auth(dicomWebConfig.requestOptions);
+        } else {
+          staticAuthHeader = `Basic ${btoa(auth)}`;
+        }
+      }
+
+      if (staticAuthHeader) {
+        userAuthenticationService.setServiceImplementation({
+          getAuthorizationHeader: () => ({
+            Authorization: staticAuthHeader,
+          }),
+        });
+      }
+
       getAuthorizationHeader = () => {
         const xhrRequestHeaders: HeadersInterface = {};
         const authHeaders = userAuthenticationService.getAuthorizationHeader();

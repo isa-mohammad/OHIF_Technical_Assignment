@@ -19,28 +19,28 @@ window.config = {
       namespace: '@ohif/extension-default.dataSourcesModule.dicomweb',
       sourceName: 'ohif',
       configuration: {
-        friendlyName: 'AWS S3 Static wado server',
-        name: 'aws',
-        wadoUriRoot: 'https://d14fa38qiwhyfd.cloudfront.net/dicomweb',
-        qidoRoot: 'https://d14fa38qiwhyfd.cloudfront.net/dicomweb',
-        wadoRoot: 'https://d14fa38qiwhyfd.cloudfront.net/dicomweb',
-        qidoSupportsIncludeField: false,
+        friendlyName: 'Neurocare Orthanc Production',
+        name: 'orthanc',
+        wadoUriRoot: 'https://orthanc-prod.neurocare.ai/dwi-proxy/dicom-web',
+        qidoRoot: 'https://orthanc-prod.neurocare.ai/dwi-proxy/dicom-web',
+        wadoRoot: 'https://orthanc-prod.neurocare.ai/dwi-proxy/dicom-web',
+        qidoSupportsIncludeField: true,
+        supportsReject: true,
+        dicomUploadEnabled: true,
         imageRendering: 'wadors',
         thumbnailRendering: 'wadors',
         enableStudyLazyLoad: true,
-        supportsFuzzyMatching: false,
+        supportsFuzzyMatching: true,
         supportsWildcard: true,
-        staticWado: true,
-        singlepart: 'bulkdata,video',
-        // whether the data source should use retrieveBulkData to grab metadata,
-        // and in case of relative path, what would it be relative to, options
-        // are in the series level or study level (some servers like series some study)
+        omitQuotationForMultipartRequest: true,
         bulkDataURI: {
           enabled: true,
-          relativeResolution: 'studies',
-          transform: url => url.replace('/pixeldata.mp4', '/rendered'),
         },
-        omitQuotationForMultipartRequest: true,
+        requestOptions: {
+          headers: {
+            Authorization: 'Basic ZnI0YXNkNHI0OmZmNDQ0ODhBRGg4',
+          },
+        },
       },
     },
 
